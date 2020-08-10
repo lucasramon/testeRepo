@@ -1,0 +1,52 @@
+<header>
+  <h1>{{pageTitle}}</h1>
+</header>
+
+<div id="collapseFour" class="collapse hide">
+  <table datatable [dtOptions]="dtOptions" class="stripe"
+    *ngIf="resShips.length">
+    <thead class="thead-light">
+      <tr class="table-active">
+        <th class="text-center">Name</th>
+        <th class="text-center">Birth year</th>
+        <th class="text-center">height</th>
+        <th class="text-center">Gender</th>
+        <th class="text-center">Home world</th>
+        <th class="text-center">Details</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of resShips | paginate: { itemsPerPage: 10, currentPage: paginaAtual };; let i = index">
+        <td class="text-center"> {{item.name}} </td>
+        <td class="text-center"> {{item.birth_year ? item.birth_year: "n/a" }} </td>
+        <td class="text-center"> {{item.height ? item.height: "n/a"}}  </td>
+        <td class="text-center"> {{item.gender? item.gender: "n/a" }} </td>
+        <td class="text-center"> {{item.homeworld? item.homeworld.name: "n/a" }} </td>
+          <!-- <td class="text-center">
+            <a title="Check Details"  [routerLink]=""><i
+                class="fa fa-file-pdf-o fa-2x" aria-hidden="true"></i> </a>
+          </td> -->
+
+      </tr>
+    </tbody>
+    <pagination-controls (pageChange)="paginaAtual = $event"></pagination-controls>
+  </table>
+  <table datatable [dtOptions]="dtOptions" class="table table-striped"
+    *ngIf="resShips.length == 0">
+    <thead class="thead-light">
+      <tr class="table-active">
+        <th class="text-center">Name</th>
+        <th class="text-center">Birth year</th>
+        <th class="text-center">height</th>
+        <th class="text-center">Gender</th>
+        <th class="text-center">HomeWorld</th>
+        <th class="text-center">Details</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="odd">
+        <td valign="top" colspan="10" class="dataTables_empty text-center">No records found</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

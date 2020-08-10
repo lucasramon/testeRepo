@@ -1,0 +1,48 @@
+
+.navbar {
+  justify-content: space-between;
+  background-color: #006400;
+}
+
+.footer{
+  justify-content: center;
+  background-color: #006400;
+
+}
+
+.title{
+  color: whitesmoke;
+}
+
+span{
+  padding-right: 1rem;
+  color: whitesmoke;
+}
+
+p{
+  padding-right: 1rem;
+  color: whitesmoke;
+}
+
+a{
+  color: whitesmoke;
+}
+
+mat-icon{
+  color: whitesmoke;
+}
+
+mat-sidenav-container{
+  height: 100%;
+}
+
+mat-sidenav,mat-sidenav-content{
+  padding: 16px;
+}
+
+mat-sidenav{
+  background-color: #2E8B57;
+  width: 150px;
+}
+
+
