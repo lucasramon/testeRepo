@@ -6,6 +6,8 @@
   --brown: rgba(61, 52, 42, 1);
   --red:  rgb(114, 0, 0, 1);
   --green: rgb(16, 61, 47);
+
+  --nav-width: 180px;
 }
 
 @font-face {
@@ -15,7 +17,8 @@
 
 .span-erro { color: red;}
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0; font-family: "starwars-font", Roboto, "Helvetica Neue", sans-serif; }
+
 
 
 /* Color Theme Swatches in RGBA */
@@ -41,10 +44,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   background-color: var(--brown);
   margin: auto 0.5em;
   min-width: 120px;
-  max-width: 133px;
+  max-width: 160px;
+  text-align: center;
 }
-
-
 .chip_link-big {
   display: flex;
   flex-flow: column nowrap;
@@ -67,11 +69,13 @@ a img {
 }
 
 a:hover{
-  background-color: var(--gold);
+  background-color: var(--gold) !important;
 }
 
 a:visited {
   color: whitesmoke !important;
 }
 
-
+.stf {
+  font-family: starwars-font;
+}

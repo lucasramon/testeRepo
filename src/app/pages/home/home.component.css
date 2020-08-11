@@ -52,5 +52,7 @@ mat-sidenav, mat-sidenav-content{
 
 mat-sidenav{
   background-color: var(--grey);
-  width: 150px;
+  border: solid 1px whitesmoke;
+  border-left: 0;
+  width: var(--nav-width);
 }

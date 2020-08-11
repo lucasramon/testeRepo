@@ -3,7 +3,6 @@
   display: flex;
   flex-flow: row;
   justify-content: space-evenly;
-  /* width: calc(100vw - 150px); */
   width: 100%;
   height: calc(100vh - 64px);
 }

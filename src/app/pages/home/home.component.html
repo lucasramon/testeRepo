@@ -1,25 +1,24 @@
 <mat-toolbar class="navbar bg_dark">
-  <div></div>
-  <div class="title" style="font-family: starwars-font;">Welcome to {{title}}!</div>
+  <div style="width: 150px;"></div>
+  <div class="title stf" >Welcome to {{title}}!</div>
   <div>
     <a routerLink="/" class="chip_link">
       <span>Home</span>
       <img src="../../../assets/icons/home.svg" alt="" srcset="">
     </a>
-
   </div>
 </mat-toolbar>
 
 <mat-sidenav-container class="bg_dark">
   <mat-sidenav mode="side" opened>
     <mat-nav-list class="my-nav-list">
-      <a mat-list-item routerLink="/persons" class="chip_link ">
+      <a mat-list-item routerLink="/persons" class="chip_link stf">
         <!-- <mat-icon>person</mat-icon> -->
         <img src="../../assets/icons/person.svg" alt="" srcset="">
         <span class="nav-caption ">List of Persons</span>
       </a>
 
-      <a mat-list-item routerLink="/ships" class="chip_link">
+      <a mat-list-item routerLink="/ships" class="chip_link stf">
         <!-- <mat-icon>airplanemode_active</mat-icon> -->
         <div class="icon_ship"></div>
         <img src="../../assets/icons/ship.svg" alt="" srcset="">
