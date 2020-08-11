@@ -30,8 +30,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     HomeComponent,
     LoginComponent,
     RegisterComponent,
-
-
   ],
   imports: [
     FormsModule,

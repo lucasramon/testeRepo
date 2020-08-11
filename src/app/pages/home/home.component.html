@@ -1,33 +1,40 @@
-<mat-toolbar  class="navbar">
-  <div class="title">Welcome to {{title}}!</div>
+<mat-toolbar class="navbar bg_gold">
+  <div class="title" style="font-family: starwars-font;">Welcome to {{title}}!</div>
   <div>
-    <a  routerLink="/" >
+    <a routerLink="/" class="chip_link">
       <mat-icon>home</mat-icon><span>Home</span>
-  </a>
+    </a>
 
   </div>
-  </mat-toolbar>
+</mat-toolbar>
 
-<mat-sidenav-container>
-<mat-sidenav mode="side" opened>
-<mat-nav-list>
-  <a mat-list-item routerLink="/persons" >
-      <mat-icon>person</mat-icon><span class="nav-caption">List of Persons</span>
-  </a>
+<mat-sidenav-container class="bg_gold">
+  <mat-sidenav mode="side" opened>
+    <mat-nav-list class="my-nav-list">
+      <a mat-list-item routerLink="/persons" class="chip_link ">
+        <!-- <mat-icon>person</mat-icon> -->
+        <img src="../../assets/icons/person.svg" alt="" srcset="">
+        <span class="nav-caption ">List of Persons</span>
+      </a>
 
-  <a mat-list-item routerLink="/ships" >
-      <mat-icon>airplanemode_active</mat-icon> <span class="nav-caption">List of Ships</span>
-  </a>
+      <a mat-list-item routerLink="/ships" class="chip_link">
+        <!-- <mat-icon>airplanemode_active</mat-icon> -->
+        <div class="icon_ship"></div>
+        <img src="../../assets/icons/ship.svg" alt="" srcset="">
+        <span class="nav-caption">List of Ships</span>
+      </a>
+    </mat-nav-list>
 
-</mat-nav-list>
-</mat-sidenav>
-<mat-sidenav-content>
-  <router-outlet></router-outlet>
-</mat-sidenav-content>
+  </mat-sidenav>
+  <mat-sidenav-content class="bg_dark">
+
+    <router-outlet></router-outlet>
+
+  </mat-sidenav-content>
 </mat-sidenav-container>
 
-<mat-toolbar  class="footer">
-    <span>Author: Lucas Ramon</span>
-    <span>Contact: lucas.ramon.jc@gmail.com</span>
-    <span>Github: <a href="https://www.github.com/lucasramon">github.com/lucasramon</a></span>
-  </mat-toolbar>
+<mat-toolbar class="footer bg_gold">
+  <span>Author: Lucas Ramon</span>
+  <span>Contact: lucas.ramon.jc@gmail.com</span>
+  <span>Github: <a href="https://www.github.com/lucasramon" class="chip_link">github.com/lucasramon</a></span>
+</mat-toolbar>

@@ -1,13 +1,14 @@
 
 .navbar {
   justify-content: space-between;
-  background-color: #006400;
 }
 
 .footer{
   justify-content: center;
-  background-color: #006400;
+}
 
+.footer * {
+  color: var(--dark);
 }
 
 .title{
@@ -15,7 +16,7 @@
 }
 
 span{
-  padding-right: 1rem;
+  padding-right: 1em;
   color: whitesmoke;
 }
 
@@ -24,8 +25,12 @@ p{
   color: whitesmoke;
 }
 
-a{
-  color: whitesmoke;
+.my-nav-list a{
+  margin-top: 0.5em;
+}
+
+.my-nav-list a:hover{
+  background-color: var(--dark);
 }
 
 mat-icon{
@@ -33,16 +38,15 @@ mat-icon{
 }
 
 mat-sidenav-container{
-  height: 100%;
+  /* height: 100%; */
 }
 
-mat-sidenav,mat-sidenav-content{
-  padding: 16px;
+mat-sidenav, mat-sidenav-content{
+  /* padding: 16px; */
+  overflow-x: hidden;
 }
 
 mat-sidenav{
-  background-color: #2E8B57;
+  background-color: var(--grey);
   width: 150px;
 }
-
-
