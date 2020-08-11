@@ -1,0 +1,45 @@
+<mat-card>
+  <mat-card-title>Login</mat-card-title>
+  <mat-card-content>
+    <form [formGroup]="loginForm" (submit)="submit()">
+      <p>
+        <mat-form-field>
+          <input type="text" matInput placeholder="Email" formControlName="email">
+
+        </mat-form-field>
+      </p>
+
+      <p>
+        <span class="span-erro" *ngIf="!loginForm.get('email').valid && loginForm.get('email').touched">
+            Please enter a valid email account. (example@email.com)
+        </span>
+    </p>
+
+      <p>
+        <mat-form-field>
+          <input type="password" matInput placeholder="Password" formControlName="password">
+        </mat-form-field>
+      </p>
+
+      <p>
+        <span class="span-erro" *ngIf="!loginForm.get('password').valid && loginForm.get('password').touched">
+            The password must have at least 6 characters.
+        </span>
+      </p>
+
+      <div class="button">
+        <button mat-button color="primary">Login</button>
+      </div>
+
+    </form>
+  </mat-card-content>
+  <mat-divider></mat-divider>
+
+  <div style="text-align: center;">
+    <label>Not registered?</label>
+    <button mat-button color="primary" type="button" routerLink="/register">
+      Create an account.
+    </button>
+  </div>
+
+</mat-card>
