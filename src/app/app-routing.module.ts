@@ -8,7 +8,7 @@ import { PersonsComponent } from './pages/persons/persons.component';
 import { PersonsViewComponent } from './pages/persons-view/persons-view.component';
 import { ShipsViewComponent } from './pages/ships-view/ships-view.component';
 import { HomeComponent } from './pages/home/home.component'
-import { HomeSelectorComponent } from './pages/home-selector/HomeSelector.component'
+import { HomeSelectorComponent } from './pages/home-selector/homeSelector.component'
 
 const routes: Routes = [
 

@@ -1,6 +1,12 @@
 
 .navbar {
+  display: flex;
+  flex-flow: row;
   justify-content: space-between;
+}
+
+.navbar a {
+  align-self: flex-end;
 }
 
 .footer{
@@ -8,7 +14,7 @@
 }
 
 .footer * {
-  color: var(--dark);
+  color: var(--gold);
 }
 
 .title{
@@ -29,9 +35,7 @@ p{
   margin-top: 0.5em;
 }
 
-.my-nav-list a:hover{
-  background-color: var(--dark);
-}
+
 
 mat-icon{
   color: whitesmoke;

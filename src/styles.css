@@ -8,10 +8,10 @@
   --green: rgb(16, 61, 47);
 }
 
-/* @font-face {
+@font-face {
   font-family: 'starwars-font';
-  src: url("./assets/fonts/starjedi/Starjedi.ttf") format('truetype'), ;
-} */
+  src: url("./assets/fonts/starjedi/Starjedi.ttf") format('truetype');
+}
 
 .span-erro { color: red;}
 html, body { height: 100%; }
@@ -32,7 +32,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .bg_gold { background-color: var(--gold); }
 .bg_red { background-color:  var(--red); }
 .bg_brown { background-color: var(--brown); }
-.bg_green { background-color: var(--green)} ; 
+.bg_green { background-color: var(--green); }
 
 .chip_link {
   color: whitesmoke;
@@ -43,6 +43,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   min-width: 120px;
   max-width: 133px;
 }
+
 
 .chip_link-big {
   display: flex;
@@ -65,7 +66,12 @@ a img {
   margin-right: 0.5em;
 }
 
+a:hover{
+  background-color: var(--gold);
+}
+
 a:visited {
   color: whitesmoke !important;
 }
+
 

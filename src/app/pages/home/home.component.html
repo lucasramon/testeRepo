@@ -1,14 +1,16 @@
-<mat-toolbar class="navbar bg_gold">
+<mat-toolbar class="navbar bg_dark">
+  <div></div>
   <div class="title" style="font-family: starwars-font;">Welcome to {{title}}!</div>
   <div>
     <a routerLink="/" class="chip_link">
-      <mat-icon>home</mat-icon><span>Home</span>
+      <span>Home</span>
+      <img src="../../../assets/icons/home.svg" alt="" srcset="">
     </a>
 
   </div>
 </mat-toolbar>
 
-<mat-sidenav-container class="bg_gold">
+<mat-sidenav-container class="bg_dark">
   <mat-sidenav mode="side" opened>
     <mat-nav-list class="my-nav-list">
       <a mat-list-item routerLink="/persons" class="chip_link ">
@@ -33,7 +35,7 @@
   </mat-sidenav-content>
 </mat-sidenav-container>
 
-<mat-toolbar class="footer bg_gold">
+<mat-toolbar class="footer bg_dark">
   <span>Author: Lucas Ramon</span>
   <span>Contact: lucas.ramon.jc@gmail.com</span>
   <span>Github: <a href="https://www.github.com/lucasramon" class="chip_link">github.com/lucasramon</a></span>
