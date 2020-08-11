@@ -1,3 +1,4 @@
+import { MaterialModule } from './material/material.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
@@ -15,9 +16,9 @@ import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { DataTablesModule } from 'angular-datatables';
 import { NgxPaginationModule } from 'ngx-pagination';
-
-
-
+import { LoginComponent } from './pages/login/login.component';
+import { RegisterComponent } from './pages/register/register.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -27,10 +28,14 @@ import { NgxPaginationModule } from 'ngx-pagination';
     PersonsViewComponent,
     ShipsViewComponent,
     HomeComponent,
+    LoginComponent,
+    RegisterComponent,
 
 
   ],
   imports: [
+    FormsModule,
+    ReactiveFormsModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
@@ -40,7 +45,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     MatListModule,
     MatIconModule,
     DataTablesModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]
