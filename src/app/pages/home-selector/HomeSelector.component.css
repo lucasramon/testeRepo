@@ -4,7 +4,7 @@
   flex-flow: row;
   justify-content: space-evenly;
   width: 100%;
-  height: calc(100vh - 64px);
+  height: 100%;
 }
 
 @keyframes hover_divider {
@@ -20,12 +20,10 @@
 }
 
 .homeSelectorWrapper .divider {
-  /* background-color: aqua; */
-  /* width: 100%; */
+
   display: flex;
   justify-content: center;
   align-items: center;
-  /* transform: skew(10, -10deg) translateY(-100px); */
   transform: skew(-15deg, 0);
   
   flex-grow: 1;
