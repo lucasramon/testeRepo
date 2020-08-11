@@ -1,38 +1,44 @@
-import { Component, Injector, OnInit } from '@angular/core';
+import { Component, Injector, OnInit } from "@angular/core";
 import { BaseService } from "src/app/lib/services/base.service";
 import { environment } from "src/environments/environment";
 import { CookieService } from "ngx-cookie-service";
-import { MatTableDataSource } from '@angular/material/table';
-import { DataSource } from '@angular/cdk/table';
-
-
+import { MatTableDataSource } from "@angular/material/table";
+import { DataSource } from "@angular/cdk/table";
 
 @Component({
-  selector: 'app-ships',
-  templateUrl: './ships.component.html',
-  styleUrls: ['./ships.component.css']
+  selector: "app-ships",
+  templateUrl: "./ships.component.html",
+  styleUrls: ["./ships.component.css"],
 })
 export class ShipsComponent implements OnInit {
   shipsService: any;
   resShips: any = [];
-  pageTitle = "List of Ships"
-  dtOptions: DataTables.Settings = {};
+  pageTitle = "List of Ships";
+  dtOptions: DataTables.Settings = {
+    "paging":   false,
+    "ordering": false,
+    "info":     false
+  };
   public paginaAtual = 1;
   constructor(
     protected injector: Injector,
-    private cookieService: CookieService,
-
+    private cookieService: CookieService
   ) {
-    this.shipsService = new BaseService(environment.apiSW +"starships",injector)
-
+    this.shipsService = new BaseService(
+      environment.apiSW + "starships",
+      injector
+    );
   }
 
   ngOnInit(): void {
-    this.getAllShips();
-
+    this.loadData();
   }
 
-  loadShipsData(subRoute? : string) {
+  async loadData() {
+    await this.getAllShips();
+  }
+
+  loadShipsData(subRoute?: string) {
     let promise = this.shipsService.getAll(subRoute).toPromise();
     return promise;
   }
@@ -40,22 +46,28 @@ export class ShipsComponent implements OnInit {
   async getAllShips() {
     let count = 1;
     let next: any;
-        //esse loop se repete até que o campo "next" do objeto seja nulo
+    //esse loop se repete até que o campo "next" do objeto seja nulo
     do {
-      let subRoute = "?page=" + count
-      const data = await this.loadShipsData(subRoute)
-      let results = data.results
-      this.setResults(results)
-      next = data.next
-      count++
-    } while (next)
-    this.resShips = new MatTableDataSource(this.resShips);
+      let subRoute = "?page=" + count;
+      const data = await this.loadShipsData(subRoute);
+      let results = data.results;
+      this.setResults(results);
+      next = data.next;
+      count++;
+    } while (next);
+    await this.setURLInShips();
   }
   setResults(results) {
     for (let item of results) {
-        this.resShips.push(item)
-      }
+      this.resShips.push(item);
     }
+  }
 
-
+  async setURLInShips() {
+    for (let id in this.resShips) {
+      const shipURL = this.resShips[id].url.split("/");
+      const idShips = shipURL[shipURL.length - 2];
+      this.resShips[id].url = idShips + "/view";
+    }
+  }
 }

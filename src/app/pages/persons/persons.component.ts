@@ -17,11 +17,10 @@ export class PersonsComponent implements OnInit {
   public paginaAtual = 1;
 
   dtOptions: DataTables.Settings = {
-    responsive: true,
-    pagingType: 'full_numbers',
-    pageLength: 10,
-
-  };;
+    "paging":   false,
+    "ordering": false,
+    "info":     false
+  };
   constructor(
     protected injector: Injector,
     private cookieService: CookieService,
@@ -40,8 +39,6 @@ export class PersonsComponent implements OnInit {
   async loadData() {
     await this.getAllHomeWorlds()
     await this.getAllPersons()
-    await this.setHomeWorldDataInPerson()
-    console.log(this.resPersons)
   }
 
   loadPersonsData(subRoute) {
@@ -79,7 +76,8 @@ export class PersonsComponent implements OnInit {
       next = data.next
       count++
     } while (next)
-
+    await this.setURLInPerson()
+    await this.setHomeWorldDataInPerson()
   }
 
   async setResults(data,resources) {
@@ -90,6 +88,14 @@ export class PersonsComponent implements OnInit {
 
     }
 
+    async setURLInPerson() {
+      for (let id in this.resPersons) {
+        const personURL = this.resPersons[id].url.split("/")
+        const idPerson = personURL[personURL.length -2 ]
+        this.resPersons[id].url = idPerson + '/view'
+      }
+    }
+  
   async setHomeWorldDataInPerson() {
     for (let id in this.resPersons) {
       const homeWorldURL = this.resPersons[id].homeworld.split("/")
