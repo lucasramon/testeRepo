@@ -9,25 +9,25 @@
   <div class="row">
     <div class="col-sm-12 col-md-3">
       <h2>
-        <span> Name: {{ resShips?.name || "loading" }} </span>
+        Name: <span>{{ resShips?.name || "loading" }} </span>
       </h2>
     </div>
 
     <div class="col-sm-12 col-md-3">
       <h2>
-        <span> Model: {{ resShips?.model || "loading" }}</span>
+        Model: <span>{{ resShips?.model || "searching" }}</span>
       </h2>
     </div>
 
     <div class="col-sm-12 col-md-3">
       <h2>
-        <span> Class: {{ resShips?.starship_class || "loading" }}</span>
+        Class: <span>{{ resShips?.starship_class || "classifying" }}</span>
       </h2>
     </div>
 
     <div class="col-sm-12 col-md-3">
       <h2>
-        <span> Manufacturer: {{ resShips?.manufacturer || "loading" }} </span>
+        Manufacturer: <span>{{ resShips?.manufacturer || "finding" }} </span>
       </h2>
     </div>
   </div>
@@ -35,25 +35,25 @@
   <div class="row">
     <div class="col-sm-12 col-md-3">
       <h2>
-        <span> Cost: {{ resShips?.cost_in_credits || "n/a" }}</span>
+        Cost: <span>{{ resShips?.cost_in_credits || "0?" }} {{resShips?.cost_in_credits ? 'credits' : ''}}</span>
       </h2>
     </div>
 
     <div class="col-sm-12 col-md-3">
       <h2>
-        <span> Cargo capacity: {{ resShips?.cargo_capacity }}</span>
+       Cargo capacity: <span>{{ resShips?.cargo_capacity }} {{ resShips?.cargo_capacity ? 'tons' : '' }}</span>
       </h2>
     </div>
 
     <div class="col-sm-12 col-md-3">
       <h2>
-        <span> Length: {{ resShips?.length }} mts</span>
+        Length: <span>{{ resShips?.length }} mts</span>
       </h2>
     </div>
 
     <div class="col-sm-12 col-md-3">
       <h2>
-        <span> Consumables: {{ resShips?.consumables }}</span>
+        Consumables: <span>{{ resShips?.consumables }}</span>
       </h2>
     </div>
   </div>

@@ -6,28 +6,28 @@
   <legend>
     Details
   </legend>
-  <div class="row">
-    <div class="col-sm-12 col-md-3">
+  <div class="row ">
+    <div class="col-sm-12 col-md-3 ">
       <h2>
-        <span> Name: {{ resPerson?.name || "loading" }} </span>
+        Name: <span> {{ resPerson?.name || "loading" }} </span>
       </h2>
     </div>
 
     <div class="col-sm-12 col-md-3">
       <h2>
-        <span> Birth Year: {{ resPerson?.birth_year || "loading" }}</span>
+        Birth Year:<span> {{ resPerson?.birth_year || "calculating" }}</span>
       </h2>
     </div>
 
     <div class="col-sm-12 col-md-3">
       <h2>
-        <span> Height: {{ resPerson?.height || "loading" }}</span>
+        Height:<span> {{ resPerson?.height || "measuring" }}</span>
       </h2>
     </div>
 
     <div class="col-sm-12 col-md-3">
       <h2>
-        <span> Mass: {{ resPerson?.mass || "loading" }} Kgs </span>
+        Mass:<span> {{ resPerson?.mass || "measuring" }} {{resPerson?.mass ? 'Kgs' : ''}} </span>
       </h2>
     </div>
   </div>
@@ -35,13 +35,13 @@
   <div class="row">
     <div class="col-sm-12 col-md-3">
       <h2>
-        <span> Species: {{ resPerson?.species.name || "n/a" }}</span>
+        Species: <span> {{ resPerson?.species.name || "n/a" }}</span>
       </h2>
     </div>
 
     <div class="col-sm-12 col-md-3">
       <h2>
-        <span> Home World: {{ resPerson?.homeworld.name }}</span>
+        Home World: <span> {{ resPerson?.homeworld.name || "n/a"}}</span>
       </h2>
     </div>
   </div>
