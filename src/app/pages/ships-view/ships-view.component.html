@@ -80,7 +80,7 @@
             <th class="text-center">height</th>
             <th class="text-center">Gender</th>
             <th class="text-center">Home world</th>
-            <th class="text-center">Details</th>
+            
           </tr>
         </thead>
         <tbody>
@@ -100,11 +100,7 @@
             <td class="text-center">
               {{ item.homeworld ? item.homeworld.name : "n/a" }}
             </td>
-            <td class="text-center">
-              <a title="Check Details" [routerLink]="item.url"
-                ><mat-icon>search</mat-icon>
-              </a>
-            </td>
+
           </tr>
         </tbody>
         <pagination-controls

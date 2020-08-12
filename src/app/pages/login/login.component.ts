@@ -41,16 +41,18 @@ export class LoginComponent implements OnInit {
   async submit(): Promise<void> {
 
     if (this.validForm()) {
-
       this.authService.login(this.loginForm.get('email').value, this.loginForm.get('password').value).subscribe(
         (authStatus) => {
           if (authStatus.isAuthenticated) {
             this.router.navigate([this.redirectUrl || '/']);
             this.uiService.showSucess('Welcome ' + authStatus.userRole);
+          } else {
+            this.uiService.showError('Failed to Login');
           }
+          this.loginForm.reset()
         },
         (error) => {
-          this.uiService.showError('Failed do Login');
+          this.uiService.showError('Failed to Login');
         }
       );
     }

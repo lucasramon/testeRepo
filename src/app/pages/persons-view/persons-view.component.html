@@ -80,11 +80,7 @@
               {{ item.starship_class ? item.starship_class : "n/a" }}
             </td>
             <td class="text-center">{{ item.crew ? item.crew : "n/a" }}</td>
-            <td class="text-center">
-              <a title="Check Details" [routerLink]="item.url"
-                ><mat-icon>search</mat-icon>
-              </a>
-            </td>
+
           </tr>
         </tbody>
         <pagination-controls
@@ -103,7 +99,7 @@
             <th class="text-center">Model</th>
             <th class="text-center">Class</th>
             <th class="text-center">Crew</th>
-            <th class="text-center">Details</th>
+            
           </tr>
         </thead>
         <tbody>
