@@ -1,3 +1,4 @@
+import { AuthService } from './services/auth.service';
 import { MaterialModule } from './material/material.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -48,7 +49,7 @@ import {DatePipe} from '@angular/common';
     MaterialModule,
     
   ],
-  providers: [DatePipe],
+  providers: [DatePipe, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
