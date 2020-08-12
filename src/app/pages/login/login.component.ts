@@ -1,3 +1,4 @@
+import { UiService } from './../../services/ui.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService } from './../../services/auth.service';
 import { Component, OnInit } from '@angular/core';
@@ -17,6 +18,7 @@ export class LoginComponent implements OnInit {
     private authService: AuthService,
     private router: Router,
     private route: ActivatedRoute,
+    private uiService: UiService,
   ) {
     route.paramMap.subscribe(p => (this.redirectUrl = p.get('redirectUrl')));
   }
@@ -44,11 +46,11 @@ export class LoginComponent implements OnInit {
         (authStatus) => {
           if (authStatus.isAuthenticated) {
             this.router.navigate([this.redirectUrl || '/']);
+            this.uiService.showSucess('Welcome ' + authStatus.userRole);
           }
         },
         (error) => {
-          // this.loginError = error; 
-          const teste = error;
+          this.uiService.showError('Failed do Login');
         }
       );
     }

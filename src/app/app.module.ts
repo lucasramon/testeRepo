@@ -1,3 +1,4 @@
+import { UiService } from './services/ui.service';
 import { AuthService } from './services/auth.service';
 import { MaterialModule } from './material/material.module';
 import { BrowserModule } from '@angular/platform-browser';
@@ -21,6 +22,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {DatePipe} from '@angular/common';
+import { ToasterModule, ToasterService } from 'angular2-toaster';
 
 @NgModule({
   declarations: [
@@ -47,9 +49,9 @@ import {DatePipe} from '@angular/common';
     DataTablesModule,
     NgxPaginationModule,
     MaterialModule,
-    
+    ToasterModule.forRoot(),
   ],
-  providers: [DatePipe, AuthService],
+  providers: [DatePipe, AuthService, UiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -5,8 +5,7 @@ import { Router } from '@angular/router';
 import { sign } from 'fake-jwt-sign'; // For fakefakeAuthProvider only
 import * as decode from 'jwt-decode';
 import { BehaviorSubject, Observable, of, throwError as observableThrowError } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
-import { environment } from '../../environments/environment';
+import { map } from 'rxjs/operators';
 import { Role } from '../enums/role.enum';
 
 export interface IAuthStatus {
@@ -29,7 +28,7 @@ export class AuthService {
     private storageService: StorageService,
     private router: Router) {
 
-    // this.authStatus.subscribe(authStatus => this.setItem('authStatus', authStatus));
+    this.authStatus.subscribe(authStatus => this.storageService.setItem('authStatus', authStatus));
 
   }
 
@@ -59,7 +58,6 @@ export class AuthService {
       map(value => {
         return decode(value.accessToken) as IAuthStatus;
       }),
-      // catchError(transformError)
     );
 
     loginResponse.subscribe(
@@ -68,7 +66,6 @@ export class AuthService {
       },
       err => {
         this.logout();
-        return observableThrowError(err);
       });
     return loginResponse;
   }
