@@ -79,3 +79,62 @@ a:visited {
 .stf {
   font-family: starwars-font;
 }
+
+.table-active{
+  background-color: var(--gray);
+  color: whitesmoke;
+}
+.dataTables_filter{
+  margin-right: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+.dataTables_filter label{
+  color: whitesmoke;
+}
+.dataTables_filter input{
+  border-radius: 2em;
+  height: 2em;
+}
+
+.ng-star-inserted .even{
+  background-color: powderblue;
+}
+
+.ngx-pagination {
+  border-radius: 2em;
+  /* min-width: 380px; */
+  background-color: var(--red);
+}
+
+.ngx-pagination a,
+.ngx-pagination span,
+.ngx-pagination .pagination-next{
+  color: whitesmoke;
+  
+}
+.ngx-pagination a:link{
+  color: whitesmoke;
+}
+.ngx-pagination.disabled a{
+  text-decoration: line-through;
+}
+
+h1 {
+  color: var(--gold);
+  margin-left: 1em;
+}
+
+h2 {
+  color: var(--gold);
+  text-shadow: 1px 1px var(--gray) ;
+  margin-left: 0.5em;
+}
+
+h2 span {
+  color: whitesmoke;
+}
+
+legend {
+  color: whitesmoke;
+}

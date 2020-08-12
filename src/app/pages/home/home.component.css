@@ -10,7 +10,7 @@
 }
 
 .footer{
-  justify-content: centerr;
+  justify-content: center;
 }
 
 .footer * {
@@ -48,6 +48,7 @@ mat-sidenav-container{
 mat-sidenav, mat-sidenav-content{
   /* padding: 16px; */
   overflow-x: hidden;
+  
 }
 
 mat-sidenav{
