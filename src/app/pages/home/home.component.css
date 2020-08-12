@@ -1,13 +1,20 @@
 
 .navbar {
+  display: flex;
+  flex-flow: row;
   justify-content: space-between;
-  background-color: #006400;
+}
+
+.navbar a {
+  align-self: flex-end;
 }
 
 .footer{
-  justify-content: center;
-  background-color: #006400;
+  justify-content: centerr;
+}
 
+.footer * {
+  color: var(--gold);
 }
 
 .title{
@@ -15,7 +22,7 @@
 }
 
 span{
-  padding-right: 1rem;
+  padding-right: 1em;
   color: whitesmoke;
 }
 
@@ -24,9 +31,11 @@ p{
   color: whitesmoke;
 }
 
-a{
-  color: whitesmoke;
+.my-nav-list a{
+  margin-top: 0.5em;
 }
+
+
 
 mat-icon{
   color: whitesmoke;
@@ -36,13 +45,14 @@ mat-sidenav-container{
   height: 100%;
 }
 
-mat-sidenav,mat-sidenav-content{
-  padding: 16px;
+mat-sidenav, mat-sidenav-content{
+  /* padding: 16px; */
+  overflow-x: hidden;
 }
 
 mat-sidenav{
-  background-color: #2E8B57;
-  width: 150px;
+  background-color: var(--grey);
+  border: solid 1px whitesmoke;
+  border-left: 0;
+  width: var(--nav-width);
 }
-
-

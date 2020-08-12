@@ -1,5 +1,81 @@
 /* You can add global styles to this file, and also import other style files */
+:root{
+  --dark: rgba(1, 17, 38, 1);
+  --gray: rgba(2, 63, 89, 1);
+  --gold: rgba(108, 76, 11, 1);
+  --brown: rgba(61, 52, 42, 1);
+  --red:  rgb(114, 0, 0, 1);
+  --green: rgb(16, 61, 47);
+
+  --nav-width: 180px;
+}
+
+@font-face {
+  font-family: 'starwars-font';
+  src: url("./assets/fonts/starjedi/Starjedi.ttf") format('truetype');
+}
 
 .span-erro { color: red;}
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0; font-family: "starwars-font", Roboto, "Helvetica Neue", sans-serif; }
+
+
+
+/* Color Theme Swatches in RGBA */
+.color_dark { color: var(--dark); }
+.color_gray { color: var(--gray);}
+.color_gold { color: var(--gold); }
+.color_red  { color: var(--red);}
+.color_brown { color: var(--brown); }
+.color_green  { color: var(--green);}
+
+/* Color Theme Swatches in RGBA */
+.bg_dark { background-color: var(--dark); }
+.bg_gray { background-color: var(--gray); }
+.bg_gold { background-color: var(--gold); }
+.bg_red { background-color:  var(--red); }
+.bg_brown { background-color: var(--brown); }
+.bg_green { background-color: var(--green); }
+
+.chip_link {
+  color: whitesmoke;
+  padding: 0.5em;
+  border-radius: 2em;
+  background-color: var(--brown);
+  margin: auto 0.5em;
+  min-width: 120px;
+  max-width: 160px;
+  text-align: center;
+}
+.chip_link-big {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  width: 120px;
+  height: 120px;
+  background-color: var(--brown);
+}
+
+.chip_link-big img {
+
+  align-self: center;
+}
+
+a img {
+  width: auto;
+  height: 32px;
+  margin-right: 0.5em;
+}
+
+a:hover{
+  background-color: var(--gold) !important;
+}
+
+a:visited {
+  color: whitesmoke !important;
+}
+
+.stf {
+  font-family: starwars-font;
+}

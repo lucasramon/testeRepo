@@ -1,0 +1,52 @@
+.homeSelectorWrapper {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-evenly;
+  width: 100%;
+  height: 100%;
+}
+
+@keyframes hover_divider {
+  from {flex-grow: 1;}
+  to {flex-grow: 2;}
+}
+@keyframes no_hover_divider{
+  from {flex-grow: 2;}
+  to {flex-grow: 1;}
+}
+.homeSelectorWrapper {
+  background-image: linear-gradient(to right, var(--red),var(--red),var(--green),var(--green));
+}
+
+.homeSelectorWrapper .divider {
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: skew(-15deg, 0);
+  
+  flex-grow: 1;
+  animation-name: no_hover_divider;
+  animation-timing-function: ease-in-out;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+
+.homeSelectorWrapper .divider .divider-content {
+  transform: skew(15deg, 0) ;
+}
+
+.homeSelectorWrapper .divider:hover {
+  animation-name: hover_divider;
+  
+}
+
+.homeSelectorWrapper .divider .divider-content {
+  cursor: pointer;
+}
+
+.homeSelectorWrapper .divider .divider-content img {
+  height: 64px;
+  width: auto;
+  margin-bottom: 0.5em;
+}

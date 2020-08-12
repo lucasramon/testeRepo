@@ -31,8 +31,6 @@ import {DatePipe} from '@angular/common';
     HomeComponent,
     LoginComponent,
     RegisterComponent,
-
-
   ],
   imports: [
     FormsModule,
