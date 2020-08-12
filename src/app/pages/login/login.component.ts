@@ -1,3 +1,4 @@
+import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService } from './../../services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormGroup, FormControl } from '@angular/forms';
@@ -10,10 +11,15 @@ import { Validators, FormGroup, FormControl } from '@angular/forms';
 export class LoginComponent implements OnInit {
 
   public loginForm: FormGroup;
+  redirectUrl = null;
 
   constructor(
-    private authService: AuthService
-  ) { }
+    private authService: AuthService,
+    private router: Router,
+    private route: ActivatedRoute,
+  ) {
+    route.paramMap.subscribe(p => (this.redirectUrl = p.get('redirectUrl')));
+  }
 
   ngOnInit(): void {
     this.buildForm();
@@ -25,14 +31,26 @@ export class LoginComponent implements OnInit {
 
   buildForm(): void {
     this.loginForm = new FormGroup({
-      'email': new FormControl(null, [Validators.required, Validators.email]),
-      'password': new FormControl(null, [Validators.required, Validators.minLength(6)]),
+      email: new FormControl(null, [Validators.required, Validators.email]),
+      password: new FormControl(null, [Validators.required, Validators.minLength(6)]),
     });
   }
 
-  submit(): void {
+  async submit(): Promise<void> {
+
     if (this.validForm()) {
-      this.authService.loginUser(this.loginForm.get('email').value, this.loginForm.get('password').value);
+
+      this.authService.login(this.loginForm.get('email').value, this.loginForm.get('password').value).subscribe(
+        (authStatus) => {
+          if (authStatus.isAuthenticated) {
+            this.router.navigate([this.redirectUrl || '/']);
+          }
+        },
+        (error) => {
+          // this.loginError = error; 
+          const teste = error;
+        }
+      );
     }
   }
 
