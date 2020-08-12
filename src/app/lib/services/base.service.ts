@@ -1,3 +1,4 @@
+import { StorageService } from './../../services/storage.service';
 import { Injector } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
@@ -11,6 +12,7 @@ export class BaseService<T extends BaseModel> {
   protected http: HttpClient;
   protected headers: HttpHeaders;
   protected cookieservice: CookieService;
+  protected storageService: StorageService;
 
 
   constructor(
@@ -19,6 +21,7 @@ export class BaseService<T extends BaseModel> {
     protected jsonDataToResourceFn?: (jsonData: any) => T
   ) {
     this.http = injector.get(HttpClient);
+    this.storageService = injector.get(StorageService);
     this.cookieservice = injector.get(CookieService);
   }
 
@@ -62,23 +65,23 @@ export class BaseService<T extends BaseModel> {
   * Busca header para inserir nas requisições com autorização necessária
   *  */
   protected HeadersAuthorization(): HttpHeaders {
-    const tceAuthToken = this.cookieservice.get('TceoAuth');
-    if (tceAuthToken) {
+    const jwt = this.storageService.getItem('jwt');
+    if (jwt) {
       const headers = new HttpHeaders({
         'Access-Control-Allow-Origin': '*',
         'Content-Type': 'application/json',
-        'Authorization': 'bearer ' + tceAuthToken
+        'Authorization': 'bearer ' + jwt
       });
       return headers;
     };
   }
 
   protected HeaderFormData() {
-    const tceAuthToken = this.cookieservice.get('TceoAuth');
+    const jwt = this.cookieservice.get('TceoAuth');
     return {
       headers: new HttpHeaders({
         'Content-Disposition': 'form-data;',
-        'Authorization': 'bearer ' + tceAuthToken
+        'Authorization': 'bearer ' + jwt
       })
     };
   }

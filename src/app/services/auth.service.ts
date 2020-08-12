@@ -32,12 +32,17 @@ export class AuthService {
 
   }
 
+  public userIsLoggedIn(): boolean {
+    const jwt = this.storageService.getItem('jwt');
+    return (jwt) ? true : false;
+  }
+
 
   private fakeAuthProvider(email: string, password: string): Observable<IServerAuthResponse> {
 
     const authStatus = {
       isAuthenticated: true,
-      userId: 'e4d1bc2ab25c',
+      userId: 'e4fg65abf5c',
       userRole: email.toLowerCase().includes('admin') ? Role.Admin :
                 email.toLowerCase().includes('user') ? Role.User : Role.None,
 
@@ -56,6 +61,7 @@ export class AuthService {
 
     const loginResponse = this.fakeAuthProvider(email, password).pipe(
       map(value => {
+        this.storageService.setItem('jwt', value.accessToken);
         return decode(value.accessToken) as IAuthStatus;
       }),
     );
@@ -71,6 +77,7 @@ export class AuthService {
   }
 
   logout(): void {
+    this.storageService.removeItem('jwt');
     this.authStatus.next(defaultAuthStatus);
   }
 

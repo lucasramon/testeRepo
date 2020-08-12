@@ -4,6 +4,9 @@ import { environment } from "src/environments/environment";
 import { CookieService } from "ngx-cookie-service";
 import { MatTableDataSource } from "@angular/material/table";
 import { DataSource } from "@angular/cdk/table";
+import { AuthService } from 'src/app/services/auth.service';
+import { UiService } from 'src/app/services/ui.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: "app-ships",
@@ -22,7 +25,10 @@ export class ShipsComponent implements OnInit {
   public paginaAtual = 1;
   constructor(
     protected injector: Injector,
-    private cookieService: CookieService
+    private cookieService: CookieService,
+    private authService: AuthService,
+    private uiService: UiService,
+    private router: Router,
   ) {
     this.shipsService = new BaseService(
       environment.apiSW + "starships",
@@ -69,5 +75,16 @@ export class ShipsComponent implements OnInit {
       const idShips = shipURL[shipURL.length - 2];
       this.resShips[id].url = idShips + "/view";
     }
+  }
+
+  async seeDetails(url: string): Promise<void> {
+
+    if (this.authService.userIsLoggedIn()) {
+      this.router.navigateByUrl('persons/' + url);
+    } else {
+      this.uiService.showInfo('Not authenticaded', 'Please login to see the details.');
+      this.router.navigateByUrl('login');
+    }
+
   }
 }

@@ -1,3 +1,4 @@
+import { AuthenticatedGuard } from './guards/authenticated.guard';
 import { RegisterComponent } from './pages/register/register.component';
 import { LoginComponent } from './pages/login/login.component';
 import { NgModule } from '@angular/core';
@@ -37,6 +38,7 @@ const routes: Routes = [
           {
             path: ':id/view',
             component: PersonsViewComponent,
+            canActivate: [AuthenticatedGuard]
           },
         ],
       },
@@ -51,6 +53,7 @@ const routes: Routes = [
           {
             path: ':id/view',
             component: ShipsViewComponent,
+            canActivate: [AuthenticatedGuard]
           },
         ],
       },

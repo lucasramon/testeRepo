@@ -1,3 +1,6 @@
+import { UiService } from './../../services/ui.service';
+import { Router } from '@angular/router';
+import { AuthService } from './../../services/auth.service';
 import { Component, Injector, OnInit } from "@angular/core";
 import { BaseService } from "src/app/lib/services/base.service";
 import { environment } from "src/environments/environment";
@@ -24,6 +27,9 @@ export class PersonsComponent implements OnInit {
   constructor(
     protected injector: Injector,
     private cookieService: CookieService,
+    private authService: AuthService,
+    private uiService: UiService,
+    private router: Router,
 
   ) {
     this.personService = new BaseService(environment.apiSW + "people", injector)
@@ -102,6 +108,17 @@ export class PersonsComponent implements OnInit {
       const idHomeWorld = homeWorldURL[homeWorldURL.length -2 ]
       this.resPersons[id].homeworld = this.resHomeWorlds[idHomeWorld-1]
     }
+  }
+
+  async seeDetails(url: string): Promise<void> {
+
+    if (this.authService.userIsLoggedIn()) {
+      this.router.navigateByUrl('persons/' + url);
+    } else {
+      this.uiService.showInfo('Not authenticaded', 'Please login to see the details.');
+      this.router.navigateByUrl('login');
+    }
+
   }
 
 }
