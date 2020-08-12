@@ -1,2 +1,201 @@
-<p>ships-view works!</p>
+<header>
+  <h1>{{ pageTitle }} {{ resShips?.name || "" }}</h1>
+</header>
 
+<fieldset>
+  <legend>
+    Details
+  </legend>
+  <div class="row">
+    <div class="col-sm-12 col-md-3">
+      <h2>
+        <span> Name: {{ resShips?.name || "loading" }} </span>
+      </h2>
+    </div>
+
+    <div class="col-sm-12 col-md-3">
+      <h2>
+        <span> Model: {{ resShips?.model || "loading" }}</span>
+      </h2>
+    </div>
+
+    <div class="col-sm-12 col-md-3">
+      <h2>
+        <span> Class: {{ resShips?.starship_class || "loading" }}</span>
+      </h2>
+    </div>
+
+    <div class="col-sm-12 col-md-3">
+      <h2>
+        <span> Manufacturer: {{ resShips?.manufacturer || "loading" }} </span>
+      </h2>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-12 col-md-3">
+      <h2>
+        <span> Cost: {{ resShips?.cost_in_credits || "n/a" }}</span>
+      </h2>
+    </div>
+
+    <div class="col-sm-12 col-md-3">
+      <h2>
+        <span> Cargo capacity: {{ resShips?.cargo_capacity }}</span>
+      </h2>
+    </div>
+
+    <div class="col-sm-12 col-md-3">
+      <h2>
+        <span> Length: {{ resShips?.length }} mts</span>
+      </h2>
+    </div>
+
+    <div class="col-sm-12 col-md-3">
+      <h2>
+        <span> Consumables: {{ resShips?.consumables }}</span>
+      </h2>
+    </div>
+  </div>
+</fieldset>
+
+<br />
+<br />
+
+<fieldset>
+  <legend>Details of the pilots</legend>
+
+  <div class="row">
+    <div id="collapseFour" class="collapse hide">
+      <table
+        datatable
+        [dtOptions]="dtOptions"
+        class="stripe"
+        *ngIf="resShips?.pilots?.length"
+      >
+        <thead class="thead-light">
+          <tr class="table-active">
+            <th class="text-center">Name</th>
+            <th class="text-center">Birth year</th>
+            <th class="text-center">height</th>
+            <th class="text-center">Gender</th>
+            <th class="text-center">Home world</th>
+            <th class="text-center">Details</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            *ngFor="
+              let item of resShips?.pilots
+                | paginate: { itemsPerPage: 10, currentPage: paginaAtual };
+              let i = index
+            "
+          >
+            <td class="text-center">{{ item.name }}</td>
+            <td class="text-center">
+              {{ item.birth_year ? item.birth_year : "n/a" }}
+            </td>
+            <td class="text-center">{{ item.height ? item.height : "n/a" }}</td>
+            <td class="text-center">{{ item.gender ? item.gender : "n/a" }}</td>
+            <td class="text-center">
+              {{ item.homeworld ? item.homeworld.name : "n/a" }}
+            </td>
+            <td class="text-center">
+              <a title="Check Details" [routerLink]="item.url"
+                ><mat-icon>search</mat-icon>
+              </a>
+            </td>
+          </tr>
+        </tbody>
+        <pagination-controls
+          (pageChange)="paginaAtual = $event"
+        ></pagination-controls>
+      </table>
+      <table
+        datatable
+        [dtOptions]="dtOptions"
+        class="table table-striped"
+        *ngIf="resShips?.pilots?.length == 0"
+      >
+        <thead class="thead-light">
+          <tr class="table-active">
+            <th class="text-center">Name</th>
+            <th class="text-center">Birth year</th>
+            <th class="text-center">height</th>
+            <th class="text-center">Gender</th>
+            <th class="text-center">HomeWorld</th>
+            <th class="text-center">Details</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="odd">
+            <td valign="top" colspan="10" class="dataTables_empty text-center">
+              No records found
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</fieldset>
+
+<br />
+<br />
+
+<fieldset>
+  <legend>Details of the films</legend>
+
+  <div class="row">
+    <div id="collapseFour" class="collapse hide">
+      <table
+        datatable
+        [dtOptions]="dtOptions"
+        class="stripe"
+        *ngIf="resShips?.films?.length"
+      >
+        <thead class="thead-light">
+          <tr class="table-active">
+            <th class="text-center">Title</th>
+            <th class="text-center">Director</th>
+            <th class="text-center">Release Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            *ngFor="let item of resShips?.films | paginate: { itemsPerPage: 10, currentPage: paginaAtual };; let i = index"
+          >
+            <td class="text-center">{{ item.title }}</td>
+            <td class="text-center">{{ item.director ? item.director : "n/a" }}</td>
+            <td class="text-center">
+              {{ item.release_date | date }}
+            </td>
+          </tr>
+        </tbody>
+        <pagination-controls
+          (pageChange)="paginaAtual = $event"
+        ></pagination-controls>
+      </table>
+      <table
+        datatable
+        [dtOptions]="dtOptions"
+        class="table table-striped"
+        *ngIf="resShips?.films?.length == 0"
+      >
+        <thead class="thead-light">
+          <tr class="table-active">
+            <th class="text-center">Title</th>
+            <th class="text-center">Director</th>
+            <th class="text-center">Release Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="odd">
+            <td valign="top" colspan="10" class="dataTables_empty text-center">
+              No records found
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</fieldset>

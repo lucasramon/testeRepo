@@ -24,7 +24,7 @@ export class BaseService<T extends BaseModel> {
 
   getAll(subRoute?: string) {
     this.headers = this.HeadersAuthorization();
-    return this.http.get( this.apiPath +subRoute , { headers: this.headers }).pipe(
+    return this.http.get( "https://cors-anywhere.herokuapp.com/"+this.apiPath +subRoute , { headers: this.headers }).pipe(
       finalize(() => {
       }),
       catchError((error: Response) =>{
@@ -36,7 +36,7 @@ export class BaseService<T extends BaseModel> {
 
   getById(id: number) {
     this.headers = this.HeadersAuthorization();
-    return this.http.get(this.apiPath + id , { headers: this.headers }).pipe(
+    return this.http.get("https://cors-anywhere.herokuapp.com/"+this.apiPath + id , { headers: this.headers }).pipe(
       finalize(() => {
       }),
       catchError((error: Response) =>{
@@ -47,7 +47,7 @@ export class BaseService<T extends BaseModel> {
 
   getByLink(link: string) {
     this.headers = this.HeadersAuthorization();
-    return this.http.get(link, { headers: this.headers }).pipe(
+    return this.http.get("https://cors-anywhere.herokuapp.com/"+link, { headers: this.headers }).pipe(
       finalize(() => {
 
       }),
