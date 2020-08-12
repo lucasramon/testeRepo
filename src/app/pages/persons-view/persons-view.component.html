@@ -1,1 +1,190 @@
-<p>persons-view works!</p>
+<header>
+  <h1>{{ pageTitle }} {{ resPerson?.name || "" }}</h1>
+</header>
+
+<fieldset>
+  <legend>
+    Details
+  </legend>
+  <div class="row">
+    <div class="col-sm-12 col-md-3">
+      <h2>
+        <span> Name: {{ resPerson?.name || "loading" }} </span>
+      </h2>
+    </div>
+
+    <div class="col-sm-12 col-md-3">
+      <h2>
+        <span> Birth Year: {{ resPerson?.birth_year || "loading" }}</span>
+      </h2>
+    </div>
+
+    <div class="col-sm-12 col-md-3">
+      <h2>
+        <span> Height: {{ resPerson?.height || "loading" }}</span>
+      </h2>
+    </div>
+
+    <div class="col-sm-12 col-md-3">
+      <h2>
+        <span> Mass: {{ resPerson?.mass || "loading" }} Kgs </span>
+      </h2>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-12 col-md-3">
+      <h2>
+        <span> Species: {{ resPerson?.species.name || "n/a" }}</span>
+      </h2>
+    </div>
+
+    <div class="col-sm-12 col-md-3">
+      <h2>
+        <span> Home World: {{ resPerson?.homeworld.name }}</span>
+      </h2>
+    </div>
+  </div>
+</fieldset>
+
+<br />
+<br />
+
+<fieldset>
+  <legend>Details of the spaceships</legend>
+
+  <div class="row">
+    <div id="collapseFour" class="collapse hide">
+      <table
+        datatable
+        [dtOptions]="dtOptions"
+        class="stripe"
+        *ngIf="resPerson?.starships.length"
+      >
+        <thead class="thead-light">
+          <tr class="table-active">
+            <th class="text-center">Name</th>
+            <th class="text-center">Model</th>
+            <th class="text-center">Class</th>
+            <th class="text-center">Crew</th>
+            <th class="text-center">Details</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            *ngFor="let item of resPerson?.starships | paginate: { itemsPerPage: 10, currentPage: paginaAtual };; let i = index"
+          >
+            <td class="text-center">{{ item.name }}</td>
+            <td class="text-center">{{ item.model ? item.model : "n/a" }}</td>
+            <td class="text-center">
+              {{ item.starship_class ? item.starship_class : "n/a" }}
+            </td>
+            <td class="text-center">{{ item.crew ? item.crew : "n/a" }}</td>
+            <td class="text-center">
+              <a title="Check Details" [routerLink]="item.url"
+                ><mat-icon>search</mat-icon>
+              </a>
+            </td>
+          </tr>
+        </tbody>
+        <pagination-controls
+          (pageChange)="paginaAtual = $event"
+        ></pagination-controls>
+      </table>
+      <table
+        datatable
+        [dtOptions]="dtOptions"
+        class="table table-striped"
+        *ngIf="resPerson?.starships.length == 0"
+      >
+        <thead class="thead-light">
+          <tr class="table-active">
+            <th class="text-center">Name</th>
+            <th class="text-center">Model</th>
+            <th class="text-center">Class</th>
+            <th class="text-center">Crew</th>
+            <th class="text-center">Details</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="odd">
+            <td valign="top" colspan="10" class="dataTables_empty text-center">
+              No records found
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</fieldset>
+
+<br />
+<br />
+
+<fieldset>
+  <legend>Details of the vehicles</legend>
+
+  <div class="row">
+    <div id="collapseFour" class="collapse hide">
+      <table
+        datatable
+        [dtOptions]="dtOptions"
+        class="stripe"
+        *ngIf="resPerson?.vehicles.length"
+      >
+        <thead class="thead-light">
+          <tr class="table-active">
+            <th class="text-center">Name</th>
+            <th class="text-center">Model</th>
+            <th class="text-center">Class</th>
+            <th class="text-center">Crew</th>
+            <th class="text-center">Details</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            *ngFor="let item of resPerson?.vehicles | paginate: { itemsPerPage: 10, currentPage: paginaAtual };; let i = index"
+          >
+            <td class="text-center">{{ item.name }}</td>
+            <td class="text-center">{{ item.model ? item.model : "n/a" }}</td>
+            <td class="text-center">
+              {{ item.vehicle_class ? item.vehicle_class : "n/a" }}
+            </td>
+            <td class="text-center">{{ item.crew ? item.crew : "n/a" }}</td>
+            <td class="text-center">
+              <a title="Check Details" [routerLink]="item.url"
+                ><mat-icon>search</mat-icon>
+              </a>
+            </td>
+          </tr>
+        </tbody>
+        <pagination-controls
+          (pageChange)="paginaAtual = $event"
+        ></pagination-controls>
+      </table>
+      <table
+        datatable
+        [dtOptions]="dtOptions"
+        class="table table-striped"
+        *ngIf="resPerson?.vehicles.length == 0"
+      >
+        <thead class="thead-light">
+          <tr class="table-active">
+            <th class="text-center">Name</th>
+            <th class="text-center">Model</th>
+            <th class="text-center">Class</th>
+            <th class="text-center">Crew</th>
+            <th class="text-center">Details</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="odd">
+            <td valign="top" colspan="10" class="dataTables_empty text-center">
+              No records found
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</fieldset>

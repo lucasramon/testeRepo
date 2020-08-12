@@ -19,6 +19,13 @@ export class PersonsViewComponent implements OnInit {
   personService: any;
   homeWorldService: any;
   resPerson: any;
+  pageTitle = "Details of "
+  paginaAtual = 1
+  dtOptions: DataTables.Settings = {
+    "paging":   false,
+    "ordering": false,
+    "info":     false
+  };
 
   constructor(
     protected injector: Injector,

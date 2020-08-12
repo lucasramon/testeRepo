@@ -2,7 +2,8 @@ import { Component, Injector, OnInit } from '@angular/core';
 import { BaseService } from "src/app/lib/services/base.service";
 import { environment } from "src/environments/environment";
 import { CookieService } from "ngx-cookie-service";
-import { ActivatedRoute} from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
+import { DatePipe } from '@angular/common';
 
 
 @Component({
@@ -16,6 +17,15 @@ export class ShipsViewComponent implements OnInit {
   pilotService: any;
 
   resShips: any = [];
+
+  pageTitle = "Details of "
+  paginaAtual = 1
+  dtOptions: DataTables.Settings = {
+    "paging":   false,
+    "ordering": false,
+    "info":     false
+  };
+
   protected route: ActivatedRoute;
   constructor(
     protected injector: Injector,

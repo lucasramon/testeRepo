@@ -20,6 +20,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {DatePipe} from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -45,9 +46,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatIconModule,
     DataTablesModule,
     NgxPaginationModule,
-    MaterialModule
+    MaterialModule,
+    
   ],
-  providers: [AuthService],
+  providers: [DatePipe, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
